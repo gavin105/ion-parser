@@ -1,4 +1,5 @@
-#ION-PARSER
+# ION-PARSER
+
 ion-parser is the fastest and lightest Javascript parser for TOML and ION files.
 
 TOML stands for **T**om's **O**bvious and **M**inimal **L**anguage and it is an awesome language for your configuration files, better than JSON and YAML on many aspects. [Learn here](https://github.com/toml-lang/toml) what is TOML and how to use it (promise, it's worth the ten minutes learning).
