@@ -1,0 +1,49 @@
+{
+  "_from": "@ltd/j-toml",
+  "_id": "@ltd/j-toml@0.5.57",
+  "_inBundle": false,
+  "_integrity": "sha512-niUK0RlW73zR2TtJ/DNHqlw2r9W6OawT0qL45iD1V3qJgYHSTD/J4UAWGYazEK8f7j7/DVW47owDAO6qkb+2XA==",
+  "_location": "/@ltd/j-toml",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@ltd/j-toml",
+    "name": "@ltd/j-toml",
+    "escapedName": "@ltd%2fj-toml",
+    "scope": "@ltd",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@ltd/j-toml/-/j-toml-0.5.57.tgz",
+  "_shasum": "c57f8ee6eeba1d54976d884814e6d7ae01a27619",
+  "_spec": "@ltd/j-toml",
+  "_where": "D:\\Web\\Sandbox\\TOML",
+  "author": {
+    "name": "龙腾道",
+    "email": "LongTengDao@LongTengDao.com",
+    "url": "www.LongTengDao.com"
+  },
+  "bugs": {
+    "url": "https://GitHub.com/LongTengDao/j-toml/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "An implementation of TOML v0.5 written by LongTengDao.／龙腾道为汤小明语 v0.5 写的实现。",
+  "homepage": "https://github.com/LongTengDao/j-toml#readme",
+  "keywords": [
+    "TOML"
+  ],
+  "license": "LGPL-3.0",
+  "name": "@ltd/j-toml",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LongTengDao/j-toml.git"
+  },
+  "version": "0.5.57"
+}
