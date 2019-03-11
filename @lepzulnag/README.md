@@ -47,7 +47,7 @@ console.log(data)
 
 // async
 ION.parseFile('myFile.ion', (err, data) => {
-	console.log(err || data)
+  console.log(err || data)
 })
 ```
 
@@ -75,8 +75,6 @@ You can download the browser version of ion-parser [here](https://github.com/Lep
 
 Just add the file to your project and require it with a script tag.
 
-## An exemple of `.ion` file
-
 
 ## <a name="ion"></a>Differences between ION and TOML
 There are not so many differences between ION and TOML. Basically, every TOML file is a valid ION file. Still, ION improves TOML on the following points :
@@ -87,31 +85,31 @@ Adding commas before every end of line is not always pleasant and not necessary 
 ```
 # TOML
 point = {
-	x = 12,
-	y = 152
+  x = 12,
+  y = 152
 }
 colors = [
-	'red',
-	'green',
-	'pink',
+  'red',
+  'green',
+  'pink',
 ]
 ```
 can be written this way with ION files :
 ```
 # ION
 point = {
-	x = 12
-	y = 152
+  x = 12
+  y = 152
 }
 colors = [
-	'red'
-	'green'
-	'pink'
+  'red'
+  'green'
+  'pink'
 ]
 # This is the same as :
 colors = [
-	'red', 'green'
-	'pink'
+  'red', 'green'
+  'pink'
 ]
 ```
 
@@ -121,9 +119,9 @@ There is still a cleaner way to create array with ION files. Let's use our previ
 ```
 # TOML
 colors = [
-	'red',
-	'green',
-	'pink',
+  'red',
+  'green',
+  'pink',
 ]
 ```
 
@@ -163,9 +161,9 @@ pink
 
 Here is the comparison between **ion-parser** and the other 0.5.0-compliant TOML parsers for Javascript :
 
-- [Iiarna](https://www.npmjs.com/package/@iarna/toml)'s Toml
-- [LongTengDao](https://www.npmjs.com/package/@iarna/toml)'s Toml
-- [Bombadil](https://www.npmjs.com/package/@iarna/toml) (wich use the *Chevrotain Parser Building Toolkit*)
+- [Iarna](https://www.npmjs.com/package/@iarna/toml)'s Toml
+- [LongTengDao](https://www.npmjs.com/package/@ltd/j-toml)'s Toml
+- [Bombadil](https://www.npmjs.com/package/@sgarciac/bombadil) (wich use the *Chevrotain Parser Building Toolkit*)
 
 |                                                                 | ion-parser | Iarna's toml | LongTengDao's j-toml | Bombadil |
 |-----------------------------------------------------------------|------------|--------------|----------------------|----------|
