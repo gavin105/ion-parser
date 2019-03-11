@@ -2,7 +2,7 @@
 
 ion-parser is the fastest and lightest Javascript parser for TOML and ION files.
 
-TOML stands for **T**om's **O**bvious and **M**inimal **L**anguage and it is an awesome language for your configuration files, better than JSON and YAML on many aspects. [Learn here](https://github.com/toml-lang/toml) what is TOML and how to use it (promise, it's worth the ten minutes learning).
+TOML stands for **T**om's **O**bvious and **M**inimal **L**anguage and it is an awesome language for your configuration files, better than JSON and YAML on many aspects. [Learn here](https://github.com/toml-lang/toml) what is TOML and how to use it (it's definitely worth the ten minutes learning).
 
 ION stands for **I**ntuitive **O**bject **N**otation. It is 90% inspired by TOML and, compared to TOML, facilitate the creation of arrays and completely remove the need to use commas. Any TOML file is a valid ION file, although the opposite is not true.
 
@@ -71,7 +71,7 @@ console.log(data.soundOptions.volume)  // 68
 
 
 ### Using in browser
-You can download the browser version of ion-parser [here](). 
+You can download the browser version of ion-parser [here](https://github.com/Lepzulnag/ion-parser/blob/master/%40lepzulnag-browser/ion-parser.js). 
 
 Just add the file to your project and require it with a script tag.
 
