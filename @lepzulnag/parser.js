@@ -56,8 +56,8 @@ function parse(src) {
 
 		// comment
 		case '#':
-			position = source.indexOf('\n', position+1)
-			if (position == -1)
+			position = source.indexOf('\n', position+1) - 1
+			if (position == -2)
 				position = Infinity
 		continue
 
@@ -424,7 +424,7 @@ class Scope {
 
 	// enter an inline scope
 	enter(raw, isArray=false) {
-		this.scopeList.push(inlineScope(raw))
+		this.scopeList.push(inlineScope(raw.trimEnd()))
 	
 		// we create the data
 		let elements = this.getFullScope()

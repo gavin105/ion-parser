@@ -15,7 +15,7 @@ First, install ion-parser : `npm i ion-parser`.
 Then, let's suppose we have the following ION / TOML file :
 
 ```
-# myFile.ion
+# myFile.toml
 title = 'Hey universe'
 
 [soundOptions]
@@ -30,7 +30,7 @@ We read the file and transform it into a javascript object this way :
 const ION = require('ion-parser')
 const fs = require('fs')
 
-const data = ION.parse(fs.readFileSync('myFile.ion'))
+const data = ION.parse(fs.readFileSync('myFile.toml'))
 console.log(data.title)  // 'Hey universe'
 console.log(data.soundOptions.volume)  // 68
 ```
@@ -42,7 +42,7 @@ If you want to read from a file, you can directly use the `ION.parseFile` functi
 const ION = require('ion-parser')
 
 // sync (will throw an error in case of bad syntax or bad file reading)
-const data = ION.parseFile('myFile.ion')
+const data = ION.parseFile('myFile.toml')
 console.log(data)
 
 // async
@@ -73,7 +73,40 @@ console.log(data.soundOptions.volume)  // 68
 ### Using in browser
 You can download the browser version of ion-parser [here](https://github.com/Lepzulnag/ion-parser/blob/master/%40lepzulnag-browser/ion-parser.js). 
 
-Just add the file to your project and require it with a script tag.
+Just add the file to your project and require it with a script tag. You can then use the globally defined `ION` object.
+
+
+## Speed and size comparison with other parsers
+Here is the comparison between **ion-parser** and the other 0.5.0-compliant TOML parsers for Javascript :
+
+- [Iarna](https://www.npmjs.com/package/@iarna/toml)'s Toml
+- [LongTengDao](https://www.npmjs.com/package/@ltd/j-toml)'s Toml
+- [Bombadil](https://www.npmjs.com/package/@sgarciac/bombadil) (wich use the *Chevrotain Parser Building Toolkit*)
+
+*(All time values are milliseconds)*
+
+|                                                                 | ion-parser | Iarna's toml | LongTengDao's j-toml | Bombadil |
+|-----------------------------------------------------------------|------------|--------------|----------------------|----------|
+| Require                                                         | 2.375      | 14.720       | 5.969                | 196.741  |
+| First round                                                     | 9.489      | 13.911       | 12.267               | 69.970   |
+| One-use (require+first round)                                   | 11.864     | 28.631       | 18.236               | 266.711  |
+| Warm round                                                      | 1.483      | 7.275        | 1.420                | 34.878   |
+| Hot round                                                       | 0.501      | 0.604        | 0.627                | 6.639    |
+| Package size (Including other modules, readme, sourcemaps, ...) | 20.9 Ko    | 93.1 Ko      | 261 Ko               | +3000 Ko |
+
+
+The comparison has been made in a Node 11.2.0 environment with this medium-size [sample TOML file](https://gist.github.com/robmuh/7966da29024c075349a963840e2298b2), which covers about all the different ways to use TOML.
+
+The comparison has been made in three rounds because of the way Javascript works :
+
+* For the first round, the Javascript engine has done no compilation yet. The functions are directly interpreted when evaluated.
+* After a fisrt round, the Javascript engine will do some light compilation called *warming*. That's why the second call is faster than the first.
+* If a function is called many times, the Javascript engine will do *hot* compilation optimisations so that the function runs super-fast.
+
+Bombadil is so big and slow compared to others parsers because it uses a third-party library (Chevrotain) - even though Chevrotain is describing itself as 'blazing fast'.
+
+`ion-parser` is also robust. Errors are prettily handled, giving you informations about any bad syntax.
+
 
 
 ## <a name="ion"></a>Differences between ION and TOML
@@ -106,6 +139,7 @@ colors = [
   'green'
   'pink'
 ]
+
 # This is the same as :
 colors = [
   'red', 'green'
@@ -114,7 +148,7 @@ colors = [
 ```
 
 ### 2. Intelligent array creation
-There is still a cleaner way to create array with ION files. Let's use our previous exemple :
+There is another way to create array with ION files. Let's use our previous exemple :
 
 ```
 # TOML
@@ -125,8 +159,6 @@ colors = [
 ]
 ```
 
-With ion, you could write it this way :
-
 ```
 # ION
 [colors]
@@ -135,7 +167,7 @@ With ion, you could write it this way :
 'pink'
 ```
 
-Because a key with no value will be considered as an array's element.
+Any value without a key will be considered as an array's element.
 
 
 ### 3. String values with no quotation marks
@@ -154,37 +186,3 @@ red
 green
 pink
 ```
-
-
-## Speed comparisons
-> I want to parse TOML files. Why should I use ion-parser?
-
-Here is the comparison between **ion-parser** and the other 0.5.0-compliant TOML parsers for Javascript :
-
-- [Iarna](https://www.npmjs.com/package/@iarna/toml)'s Toml
-- [LongTengDao](https://www.npmjs.com/package/@ltd/j-toml)'s Toml
-- [Bombadil](https://www.npmjs.com/package/@sgarciac/bombadil) (wich use the *Chevrotain Parser Building Toolkit*)
-
-|                                                                 | ion-parser | Iarna's toml | LongTengDao's j-toml | Bombadil |
-|-----------------------------------------------------------------|------------|--------------|----------------------|----------|
-| Require                                                         | 2.375      | 14.720       | 5.969                | 196.741  |
-| First round                                                     | 9.489      | 13.911       | 12.267               | 69.970   |
-| One-use (require+first round)                                   | 11.864     | 28.631       | 18.236               | 266.711  |
-| Warm round                                                      | 1.483      | 7.275        | 1.420                | 34.878   |
-| Hot round                                                       | 0.501      | 0.604        | 0.627                | 6.639    |
-| Package size (Including other modules, readme, sourcemaps, ...) | 20.9 Ko    | 93.1 Ko      | 261 Ko               | +3000 Ko |
-
-*(All time values are milliseconds)*
-
-The comparison has been made in a Node 11.2.0 environment with this [sample TOML file](https://gist.github.com/robmuh/7966da29024c075349a963840e2298b2), which covers about all the different ways to use TOML.
-
-The comparison has been made in three rounds because of the way Javascript works :
-
-* For the first round, the Javascript engine has done no compilation yet. The functions are directly interpreted when evaluated.
-* After a fisrt round, the Javascript engine will do some light compilation called *warming*. That's why the second call is faster than the first.
-* If a function is called many times, the Javascript engine will do *hot* compilation optimisations so that the function runs super-fast.
-
-The fact Bombadil is so big and slow compared to others parsers is explained by the fact it uses a third-party library (chevrotain), when for example ion-parser and LongTengDao's j-toml are a one-file parser.
-
-`ion-parser` and fast and light but also robust. Errors are prettily handled, giving you informations about any bad syntax.
-

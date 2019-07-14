@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"par",
+				"parseFile\tmethod"
+			],
+			[
 				"mom",
 				"momName\tlet"
 			],
@@ -58,10 +62,6 @@
 			[
 				"def",
 				"defineKey\tlet"
-			],
-			[
-				"par",
-				"parser\tlet"
 			],
 			[
 				"pars",
@@ -519,6 +519,71 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 6039,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "%YAML 1.2\n---\n# See http://www.sublimetext.com/docs/3/syntax.html\nfile_extensions:\n  - ec\nscope: source.example-c\n\ncontexts:\n  # The prototype context is prepended to all contexts but those setting\n  # meta_include_prototype: false.\n  prototype:\n    - include: comments\n\n  main:\n    # The main context is the initial starting point of our syntax.\n    # Include other contexts from here (or specify them directly).\n    - include: keywords\n    - include: numbers\n    - include: strings\n\n  keywords:\n    # Keywords are if, else for and while.\n    # Note that blackslashes don't need to be escaped within single quoted\n    # strings in YAML. When using single quoted strings, only single quotes\n    # need to be escaped: this is done by using two single quotes next to each\n    # other.\n    - match: '\\b(if|else|for|while)\\b'\n      scope: meta.group.op\n\n  numbers:\n    - match: '\\b(-)?[0-9.]+\\b'\n      scope: constant.numeric.example-c\n\n  strings:\n    # Strings begin and end with quotes, and use backslashes as an escape\n    # character.\n    - match: '\"'\n      scope: punctuation.definition.string.begin.example-c\n      push: inside_string\n\n  inside_string:\n    - meta_include_prototype: false\n    - meta_scope: string.quoted.double.example-c\n    - match: '\\.'\n      scope: constant.character.escape.example-c\n    - match: '\"'\n      scope: punctuation.definition.string.end.example-c\n      pop: true\n\n  comments:\n    # Comments begin with a '//' and finish at the end of the line.\n    - match: '//'\n      scope: punctuation.definition.comment.example-c\n      push:\n        # This is an anonymous context push for brevity.\n        - meta_scope: comment.line.double-slash.example-c\n        - match: $\\n?\n          pop: true\n",
+			"settings":
+			{
+				"buffer_size": 1719,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "B.json",
+			"settings":
+			{
+				"buffer_size": 3465,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\n\nconst ION = require('./@lepzulnag/parser.js')\nconst fs = require('fs')\n\nlet file = 'sampleA.toml'\n// let file = 'B.json'\n\n// console.log(ION.parseFile(file))\nION.parseFile(file, (err, data) => {\n\tconsole.log(err || data)\n})\n\ntrue\nfalse\nnull\nundefined\n// let content = fs.readFileSync(file)\n\n// try {\n\t// console.log(parse(content))\n// }\n// catch (error) {\n// \tconst {column, row} = error.loc\n// \tconsole.log('/!\\\\ '+error.msg+' ('+row+':'+column+')')\n// }",
+			"file": "test.js",
+			"file_size": 452,
+			"file_write_time": 131967438322028101,
+			"settings":
+			{
+				"buffer_size": 457,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "TOML.sublime-syntax.yaml",
+			"settings":
+			{
+				"buffer_size": 11196,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "# This is a TOML document. Boom.\n\n'my title' = \"TOML Example (v0.4.0)\"\n\n#------------------------------ Comments ------------------------------\n\n# This is a full-line comment\nkey = 'value' # This is a comment at the end of a line\n51321 = 12\n\n#--------------------------- Key/Value Pair ---------------------------\n\n\n[zabu.x.'zahzahg'.coco]\ncoco\nazerazer = Je suis en forme\nmusic = 12\nbare_key = 3131_5132_3513_351.32 is a good number, right ?\nbare- key = 'valu\"ezfer'\nzabu21\n'coco' = 658654\n65321 = 351321\nbordel\nde merde\n\"127.0.0.1\" = \"value\"\n\"character encoding\" = \"value\"\n\"ʎǝʞ\" = \"value\"\n'key2' = \"value\"\n'quoted \"value\"' = \"value\"\n\n#------------------------------- String -------------------------------\n\nstr = 'Im a string. \\\"You can quote me\\\". Name\\tJos\\u00E9\\nLocation\\tSF.'\n\nstr1 = \"\"\"\nRoses are red\nViolets are blue\"\"\"\n\nstr2 = \"Roses\\\" are red\\nViolets are blue\"\nstr3 = \"Roses are red\\r\\nViolets are blue\"\n\nstr4 = \"The quick brown fox jumps over the lazy dog.\"\n\nstr5 = \"\"\"\nThe quick brown \nfox jumps over\nthe lazy dog.\"\"\"\n\nstr6 = \"\"\"\\\nThe quick brown \\\nfox jumps over \\\nthe lazy dog.\\\n\"\"\"\nwinpath  = 'C:\\Users\\nodejs\\templates'\nwinpath2 = '\\\\ServerX\\admin$\\system32\\'\nquoted   = 'Tom \"Dubs\" Preston-Werner'\nregex    = '<\\i\\c*\\s*>'\n\nregex2 = '''I [dw]on't need \\d{2} apples'''\nlines  = '''\nThe first newline is\ntrimmed in raw strings.\n All other whitespace\n is preserved.\n'''\n\n#------------------------------ Integer ------------------------------\n\n# fractional\nflt1 = +1.0\nflt2 = 3.1415\nflt3 = -0.01\n\n# exponent\nflt4 = 5e+22\nflt5 = 1e6\nflt6 = -2E-2\n\n# both\nflt7 = 6.626e-34\n\nflt8 = 9_224  .445_991_228_313\n\n#------------------------------ Boolean ------------------------------\n\nbool1 = -Infinity gfhdfhg fdgh dfgh fdg h \nbool2 = false\n\n#------------------------------ Datetime ------------------------------\n\ndate1 = 1979-05-27 07:32:00Z\ndate2 = 1979-05-27 00:32:00-07:00\ndate3 = 1979-05-27T00:32:00.999999-07:00\ndate4 = 1979-05-27 07:32:00\ndate5 = 1979-05-27 00:32:00.999999\ndate6 = 1979-05-27\ntime1 = 07:32:00\ntime2 = 07:32:00.3513216513213213513512313213\n\n#------------------------------- Array -------------------------------\n\narr1 = {z = 1, 2, 3, ezrtzertzkerjth, x = 9}\n\nzabu\n\narr2 = [ \"red\" , \"yellow\" , \"green\" ]\narr3 = [ [ 1, 2 ], [3, 4, 5] ]\narr4 = [ \"all\", 'strings', \"\"\"are the same\"\"\", '''type''']\narr5 = [ [ 1, 2 ], [\"a\", \"b\", \"c\"] ]\n\ndata = [\n\t\n\t\n]\n\narr7 = [\n\t1, 2, 3\n]\n\narr8 = [\n\t1,\n\t2, # this is ok\n]\n\n\n#---------------------------- Inline Table ----------------------------\n\nname = { first = \"Tom\", last = \"Preston-Werner\" }\n\npoints = [ { x = 1, y = 2, z = 3 },\n\t\t\t\t\t { x = 7, y = 8, z = 9 },\n\t\t\t\t\t { x = 2, y = 4, z = 8 } ]\n\n#------------------------------- Table -------------------------------\n\n[owner]\nname = \"Tom Preston-Werner\"\norganization = \"GitHub\"\nbio = \"GitHub Cofounder & CEO\\nLikes tater tots and beer.\"\ndob = 1979-05-27T07:32:00Z # First class dates? Why not?\n\n[database]\nserver = \"192.168.1.1\"\nports = [ 8001, 8001, 8002 ]\nconnection_max = 5000\nenabled = true\n\n[servers]\n\n\t# You can indent as you please. Tabs or spaces. TOML don't care.\n\t[servers.alpha]\n\tip = \"10.0.0.1\"\n\tdc = \"eqdc10\"\n\n\t[servers.beta]\n\tip = \"10.0.0.2\"\n\tdc = \"eqdc10\"\n\n[clients]\ndata = [ [\"gamma\", \"delta\"], [1, 2] ] # just an update to make sure parsers support it\n\n[a]\nd = 2\n\n[a.b]\nc = 1\n\n\n[dog.\"tater.man\"]\ntype = \"pug\"\n\n[table-1]\nkey1 = \"some string\"\nkey2 = 123\n\n[table-2]\nkey1 = \"another string\"\nkey2 = 456\n\n#-------------------------- Array of Tables --------------------------\n\n[[products]]\nname = \"Hammer\"\nsku = 738594937\n\n[[products]]\n\n[[products]]\nname = \"Nail\"\nsku = 284758393\ncolor = \"gray\"\n\n[[fruit]]\n\tname = \"apple\"\n\n\t[fruit.physical]\n\t\tcolor = \"red\"\n\t\tshape = \"round\"\n\n\t[[fruit.variety]]\n\t\tname = \"red delicious\"\n\n\t[[fruit.variety]]\n\t\tname = \"granny smith\"\n\n[[fruit]]\n\tname = \"banana\"\n\n\t[[fruit.variety]]\n\t\tname = \"plantain\"",
+			"file": "sampleA.ion",
+			"file_size": 4069,
+			"file_write_time": 131967922915915468,
+			"settings":
+			{
+				"buffer_size": 3851,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sampleA.toml",
+			"settings":
+			{
+				"buffer_size": 3653,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -536,12 +601,40 @@
 				"Package Control: Install Package"
 			],
 			[
-				"package",
-				"Package Control: List Packages"
-			],
-			[
 				"insta",
 				"Package Control: Install Package"
+			],
+			[
+				"Package Control: remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: reove",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"package insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package ",
+				"Package Control: Remove Package"
+			],
+			[
+				"markdown",
+				"Preferences: MarkdownLivePreview Settings"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
 			],
 			[
 				"dis",
@@ -592,10 +685,6 @@
 				"Package Control: Install Package"
 			],
 			[
-				"Package Control: instal",
-				"Package Control: Install Package"
-			],
-			[
 				"Package Control: ac",
 				"Package Control: Enable Package"
 			],
@@ -642,12 +731,31 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Web/Sandbox/TOML",
-		"/D/Web/Sandbox/TOML/@lepzulnag",
-		"/D/Web/Sandbox/TOML/@ltd"
+		"/D/Web/TOML"
 	],
 	"file_history":
 	[
+		"/C/Users/Asus/AppData/Roaming/Sublime Text 3/Packages/User/ION.sublime-syntax",
+		"/D/Web/TOML/@lepzulnag/README.md",
+		"/C/Users/Asus/AppData/Roaming/Sublime Text 3/Packages/zzz A File Icon zzz/aliases/YAML (Yarn).sublime-syntax",
+		"/C/Users/Asus/AppData/Roaming/Sublime Text 3/Packages/zzz A File Icon zzz/aliases/YAML (Sublime).sublime-syntax",
+		"/C/Users/Asus/AppData/Roaming/Sublime Text 3/Packages/zzz A File Icon zzz/aliases/YAML (Stylelint).sublime-syntax",
+		"/C/Users/Asus/AppData/Roaming/Sublime Text 3/Packages/zzz A File Icon zzz/aliases/YAML (Procfile).sublime-syntax",
+		"/C/Users/Asus/AppData/Roaming/Sublime Text 3/Packages/zzz A File Icon zzz/aliases/YAML (Lock).sublime-syntax",
+		"/C/Users/Asus/AppData/Roaming/Sublime Text 3/Packages/zzz A File Icon zzz/aliases/YAML (ESLint).sublime-syntax",
+		"/C/Users/Asus/AppData/Roaming/Sublime Text 3/Packages/zzz A File Icon zzz/aliases/YAML (Docker).sublime-syntax",
+		"/C/Users/Asus/AppData/Roaming/Sublime Text 3/Packages/zzz A File Icon zzz/aliases/YAML (CircleCI).sublime-syntax",
+		"/D/Web/TOML/sampleA.ion",
+		"/D/Web/TOML/sampleA.cson",
+		"/D/Web/TOML/sampleA.toml",
+		"/D/Web/TOML/@lepzulnag/package.json",
+		"/D/Web/TOML/@lepzulnag/parser.js",
+		"/D/Web/TOML/README.md",
+		"/D/Web/TOML/@lepzulnag-browser/ion-parser.js",
+		"/D/Web/TOML/speedComparison.js",
+		"/D/Web/Mopus/README.md",
+		"/D/Web/TOML/test.js",
+		"/D/Web/Mopus/package/package.json",
 		"/D/Web/Sandbox/TOML/sampleD.toml",
 		"/D/Web/Sandbox/TOML/sampleA.toml",
 		"/D/Web/Sandbox/TOML/test.js",
@@ -754,32 +862,11 @@
 		"/D/Web/Mopus/tests/bundle.js",
 		"/D/Web/Mopus/tests/Hero.js",
 		"/D/Web/Mopus/package/src/utils.js",
-		"/D/Web/Mopus/tests/mopus.json",
-		"/D/Web/Nixy/src/back/Server.js",
-		"/D/Web/Nixy/src/back/url.js",
-		"/D/Web/Nixy/src/utils/componentHandler.js",
-		"/D/Web/Nixy/src/front/Page.js",
-		"/D/Web/Nixy/tests/myApp/components/Zabu/Zabu.js",
-		"/D/Web/Nixy/src/back/loader.js",
-		"/D/Web/Nixy/dist/package/nixy.js",
-		"/D/Web/Nixy/node_modules/bluebird/package.json",
-		"/D/Web/Nixy/node_modules/bluebird/js/release/bluebird.js",
-		"/D/Web/Nixy/node_modules/bluebird/js/release/promise.js",
-		"/D/Web/Nixy/src/Component.js",
-		"/D/Web/Mopus/package/node_modules/glob-to-regexp/index.js",
-		"/D/Web/Mopus/package/package.json",
-		"/D/Web/Mopus/package/src/møpus.js",
-		"/D/Web/Mopus/package/modules/glob-to-pattern/index.js",
-		"/D/Web/Mopus/package/modules/glob-to-pattern/LICENSE",
-		"/D/Web/Mopus/package/node_modules/glob-to-regexp/test.js",
-		"/D/Web/Sandbox/react-app/src/App.jsx",
-		"/D/Web/Nixy/tests/myApp/components/App/App.css",
-		"/D/Web/Sandbox/cssCompilers/stylus-light/stylus/node_modules/stylus/package.json",
-		"/D/Web/Nixy/src/back/utils.js"
+		"/D/Web/Mopus/tests/mopus.json"
 	],
 	"find":
 	{
-		"height": 70.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -791,9 +878,46 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"keywords",
+			"string",
+			"illegal",
+			"string",
+			"captures",
+			"Infinity",
+			"nan",
+			"line_comment",
+			"integer",
+			"data-type",
+			"maybe-dot-key",
+			"invalid",
+			"data-types",
+			"key-val",
+			"peek_key_start",
+			"data-types",
+			"=",
+			"array",
+			"inline-table",
+			"data-types",
+			"=",
+			"array.end",
+			"]",
+			"toml",
+			"illegal",
+			"data-types",
+			"string",
+			"data-types",
+			"string",
+			"example-c",
+			"keyval",
+			"exemple",
+			"example",
+			"An example",
+			"an example",
+			"config",
+			"#",
 			"console",
 			"fragment",
 			"Unexpected",
@@ -884,44 +1008,7 @@
 			"nextIndependantSibling",
 			"tagName",
 			"getTagName",
-			"getModel",
-			"model",
-			"createExpressionGetter",
-			"expressionHandler",
-			"card",
-			"info",
-			"large",
-			"bin",
-			"absolute",
-			"content",
-			"absolute",
-			"hover",
-			"content",
-			"transition",
-			"column",
-			"console.",
-			"attributes.toString",
-			"ELEMENT",
-			"console",
-			"regularAttribute",
-			"utils",
-			"parseTag",
-			"parse(",
-			"txt",
-			"COMPONENT",
-			"ExportNamed",
-			"span",
-			"select",
-			"legend",
-			"display",
-			"title",
-			"trueValue",
-			"autoClosing",
-			"soloTags",
-			"console.log",
-			"parseTag",
-			"createElement",
-			"regularAttribute"
+			"getModel"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -929,6 +1016,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"ion",
 			"position",
 			"lineContent",
 			"line",
@@ -976,19 +1064,237 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6039,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								828,
+								828
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1552308024.04,
+							"syntax": "Packages/Naomi/syntaxes/naomi.md1.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1719,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1137,
+								1137
+							]
+						],
+						"settings":
+						{
+							"default_dir": "C:\\Users\\Asus\\AppData\\Roaming\\Sublime Text 3\\Packages\\User",
+							"syntax": "Packages/PackageDev/Package/Sublime Text Syntax Definition/Sublime Text Syntax Definition.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "B.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3465,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								933,
+								956
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1552313645.58,
+							"syntax": "Packages/JSON Key-Value/JSON Key-Value.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "test.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 457,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								226,
+								226
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1552313664.85,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 4,
+					"file": "TOML.sublime-syntax.yaml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11196,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4361,
+								4367
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1981.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "sampleA.ion",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								427,
+								427
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1552312872.25,
+							"syntax": "Packages/User/ION.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "sampleA.toml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3653,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								352,
+								352
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1552310518.78,
+							"syntax": "Packages/TOML/TOML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1050,7 +1356,7 @@
 	"project": "TOML.sublime-project",
 	"replace":
 	{
-		"height": 114.0
+		"height": 50.0
 	},
 	"save_all_on_build": false,
 	"select_file":

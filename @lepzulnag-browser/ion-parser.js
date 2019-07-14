@@ -57,8 +57,8 @@ function parse(src) {
 
 		// comment
 		case '#':
-			position = source.indexOf('\n', position+1)
-			if (position == -1)
+			position = source.indexOf('\n', position+1) - 1
+			if (position == -2)
 				position = Infinity
 		continue
 
@@ -425,7 +425,7 @@ class Scope {
 
 	// enter an inline scope
 	enter(raw, isArray=false) {
-		this.scopeList.push(inlineScope(raw))
+		this.scopeList.push(inlineScope(raw.trimEnd()))
 	
 		// we create the data
 		let elements = this.getFullScope()
@@ -741,14 +741,13 @@ function ION() {
 	return HUML.parse(result)
 }
 
-// Start parsing and deal with errors
 ION.parse = parse
 
 ION.parseFile = function(file, cb=null) {
 	if (!fs)
 		fs = require('fs')
 
-	if (cb) {
+	if (cb) {  // async
 		fs.readFile(file, (err, data) => {
 			if (err)
 				cb(err, null)
@@ -760,9 +759,8 @@ ION.parseFile = function(file, cb=null) {
 			}
 		})
 	}
-	else {
+	else  // sync
 		return parse(fs.readFileSync(file))
-	}
 }
 
 

@@ -1,17 +1,27 @@
 # This is a TOML document. Boom.
 
 'my title' = "TOML Example (v0.4.0)"
-foo = {x = 1}
 
 #------------------------------ Comments ------------------------------
 
 # This is a full-line comment
 key = 'value' # This is a comment at the end of a line
+51321 = 12
 
 #--------------------------- Key/Value Pair ---------------------------
-bare_key = 'value'
-bare-key = 'value'
 
+
+[zabu.x.'zahzahg'.coco]
+coco
+azerazer = Je suis en forme
+music = 12
+bare_key = 3131_5132_3513_351.32 is a good number, right ?
+bare- key = 'valu"ezfer'
+zabu21
+'coco' = 658654
+65321 = 351321
+youpi
+de zabadoum
 "127.0.0.1" = "value"
 "character encoding" = "value"
 "ʎǝʞ" = "value"
@@ -20,13 +30,13 @@ bare-key = 'value'
 
 #------------------------------- String -------------------------------
 
-str = "I'm a string. \"You can quote me\". Name\tJos\u00E9\nLocation\tSF."
+str = 'Im a string. \"You can quote me\". Name\tJos\u00E9\nLocation\tSF.'
 
 str1 = """
 Roses are red
 Violets are blue"""
 
-str2 = "Roses are red\nViolets are blue"
+str2 = "Roses\" are red\nViolets are blue"
 str3 = "Roses are red\r\nViolets are blue"
 
 str4 = "The quick brown fox jumps over the lazy dog."
@@ -41,7 +51,7 @@ The quick brown \
 fox jumps over \
 the lazy dog.\
 """
-'winpath'  = 'C:\Users\nodejs\templates'
+winpath  = 'C:\Users\nodejs\templates'
 winpath2 = '\\ServerX\admin$\system32\'
 quoted   = 'Tom "Dubs" Preston-Werner'
 regex    = '<\i\c*\s*>'
@@ -54,7 +64,6 @@ trimmed in raw strings.
  is preserved.
 '''
 
-
 #------------------------------ Integer ------------------------------
 
 # fractional
@@ -66,16 +75,15 @@ flt3 = -0.01
 flt4 = 5e+22
 flt5 = 1e6
 flt6 = -2E-2
-flt8 = 9_224617.445_991_228_313
 
 # both
 flt7 = 6.626e-34
 
-flt8 = 9_224_617.445_991_228_313
+flt8 = 9_224  .445_991_228_313
 
 #------------------------------ Boolean ------------------------------
 
-bool1 = true
+bool1 = -Infinity gfhdfhg fdgh dfgh fdg h 
 bool2 = false
 
 #------------------------------ Datetime ------------------------------
@@ -91,8 +99,11 @@ time2 = 07:32:00.3513216513213213513512313213
 
 #------------------------------- Array -------------------------------
 
-arr1 = [ 1, 2, 3 ]
-arr2 = [ "red", "yellow", "green" ]
+arr1 = {z = 1, 2, 3, ezrtzertzkerjth, x = 9}
+
+zabu
+
+arr2 = [ "red" , "yellow" , "green" ]
 arr3 = [ [ 1, 2 ], [3, 4, 5] ]
 arr4 = [ "all", 'strings', """are the same""", '''type''']
 arr5 = [ [ 1, 2 ], ["a", "b", "c"] ]
@@ -121,6 +132,7 @@ points = [ { x = 1, y = 2, z = 3 },
 					 { x = 2, y = 4, z = 8 } ]
 
 #------------------------------- Table -------------------------------
+
 [owner]
 name = "Tom Preston-Werner"
 organization = "GitHub"
